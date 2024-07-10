@@ -1,0 +1,16 @@
+CC = gcc
+CFLAGS = -Wall -Wextra -pedantic -std=c11
+
+all: example
+
+example: example.o mems.o
+	$(CC) $(CFLAGS) -o example example.o mems.o
+
+example.o: example.c mems.h
+	$(CC) $(CFLAGS) -c example.c
+
+mems.o: mems.c mems.h
+	$(CC) $(CFLAGS) -c mems.c
+
+clean:
+	rm -f example example.o mems.o
